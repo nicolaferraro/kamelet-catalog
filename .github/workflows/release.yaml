@@ -9,7 +9,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build Catalog
-      run: ./hack/generate-catalog.sh
+      run: ./hack/update-catalog.sh
     - name: Tag Release
       id: tag
       uses: mathieudutour/github-tag-action@v4
