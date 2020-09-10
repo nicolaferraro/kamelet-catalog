@@ -6,10 +6,17 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     steps:
+    - name: Prerequisites
+      run: |
+        echo "Installing yq..."
+        YQ_VERSION=3.2.3
+        curl -L -q https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 > yq
+        chmod a+x yq
+        sudo mv yq /usr/local/bin/
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build Catalog
-      run: ./hack/update-catalog.sh
+      run: ./dist/update-catalog.sh
     - name: Tag Release
       id: tag
       uses: mathieudutour/github-tag-action@v4
