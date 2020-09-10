@@ -20,6 +20,7 @@ spec:
         type: string
         x-descriptors:
         - urn:alm:descriptor:com.tectonic.ui:password
+        example: token-from-bot-father
   types:
     out:
       mediaType: application/json
