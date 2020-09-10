@@ -9,10 +9,8 @@ jobs:
     - name: Prerequisites
       run: |
         echo "Installing yq..."
-        YQ_VERSION=3.2.3
-        curl -L -q https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 > yq
-        chmod a+x yq
-        sudo mv yq /usr/local/bin/
+        sudo pip3 install yq
+        yq --version
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build Catalog
