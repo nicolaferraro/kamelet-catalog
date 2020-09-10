@@ -11,6 +11,13 @@ jobs:
         echo "Installing yq..."
         sudo pip3 install yq
         yq --version
+
+        echo "Installing jq..."
+        curl -L -s https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 > jq
+        chmod a+x jq
+        sudo mv jq /usr/bin/
+        jq --version
+
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build Catalog
