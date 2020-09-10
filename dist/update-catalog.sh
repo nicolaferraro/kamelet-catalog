@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 location=$(dirname $0)
 rootdir=$location/../
 
