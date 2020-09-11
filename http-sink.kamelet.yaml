@@ -21,6 +21,7 @@ spec:
         example: http://www.company.com/api/endpoint
   types:
     in: {}
+    out: {}
   flow:
     from:
       uri: "direct:#property:routeId"
