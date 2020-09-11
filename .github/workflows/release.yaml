@@ -23,7 +23,7 @@ jobs:
     - name: Build Catalog
       run: ./dist/update-catalog.sh
     - name: Commit changes
-      run: git add ./dist/* && git commit -m "Update catalog"
+      run: git commit -a -m "Update catalog" || true
     - name: Tag Release
       id: tag
       uses: mathieudutour/github-tag-action@v4
