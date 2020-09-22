@@ -12,15 +12,14 @@ spec:
     description: |-
       Receive all messages that people send to your telegram bot.
     required:
-      - botToken
+      - authorizationToken
     properties:
-      botToken:
+      authorizationToken:
         title: Token
-        description: The token to access your bot on Telegram
+        description: The token to access your bot on Telegram, that you can obtain from the Telegram "Bot Father".
         type: string
         x-descriptors:
         - urn:alm:descriptor:com.tectonic.ui:password
-        example: token-from-bot-father
   types:
     out:
       mediaType: application/json
@@ -30,7 +29,7 @@ spec:
     from:
       uri: telegram:bots
       parameters:
-        authorizationToken: "#property:botToken"
+        authorizationToken: "#property:authorizationToken"
       steps:
       - marshal:
           json: {}
