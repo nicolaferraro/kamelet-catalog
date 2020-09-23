@@ -24,6 +24,6 @@ spec:
     out: {}
   flow:
     from:
-      uri: "direct:#property:routeId"
+      uri: "direct:{{routeId}}"
       steps:
       - to: "netty-http:#property:url"

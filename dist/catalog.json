@@ -78,7 +78,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -170,7 +170,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -218,7 +218,7 @@
                 "to": "https://api.icndb.com/jokes/random"
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -259,7 +259,7 @@
         },
         "flow": {
           "from": {
-            "uri": "direct:#property:routeId",
+            "uri": "direct:{{routeId}}",
             "steps": [
               {
                 "to": "netty-http:#property:url"
@@ -352,7 +352,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -411,7 +411,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -476,7 +476,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -534,7 +534,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
@@ -593,7 +593,7 @@
                 }
               },
               {
-                "to": "direct:#property:routeId"
+                "to": "direct:{{routeId}}"
               }
             ]
           }
