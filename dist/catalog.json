@@ -78,7 +78,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -170,7 +170,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -218,7 +218,7 @@
                 "to": "https://api.icndb.com/jokes/random"
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -259,7 +259,7 @@
         },
         "flow": {
           "from": {
-            "uri": "direct:{{routeId}}",
+            "uri": "kamelet:source",
             "steps": [
               {
                 "to": "netty-http:#property:url"
@@ -352,7 +352,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -411,7 +411,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -476,7 +476,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -534,7 +534,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }
@@ -593,7 +593,7 @@
                 }
               },
               {
-                "to": "direct:{{routeId}}"
+                "to": "kamelet:sink"
               }
             ]
           }

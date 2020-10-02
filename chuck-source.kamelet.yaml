@@ -26,4 +26,4 @@ spec:
         period: "#property:period"
       steps:
         - to: https://api.icndb.com/jokes/random
-        - to: direct:{{routeId}}
+        - to: kamelet:sink
