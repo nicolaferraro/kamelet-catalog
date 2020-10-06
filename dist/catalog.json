@@ -61,15 +61,15 @@
         },
         "dependencies": [
           "camel:jackson",
-          "mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.10.5"
+          "camel:cbor"
         ],
         "flow": {
           "from": {
-            "uri": "aws-kinesis:#property:stream",
+            "uri": "aws-kinesis:{{stream}}",
             "parameters": {
-              "secretKey": "#property:secretKey",
-              "accessKey": "#property:accessKey",
-              "region": "#property:region"
+              "secretKey": "{{secretKey}}",
+              "accessKey": "{{accessKey}}",
+              "region": "{{region}}"
             },
             "steps": [
               {
@@ -156,12 +156,12 @@
         ],
         "flow": {
           "from": {
-            "uri": "aws2-sqs:#property:queueNameOrArn",
+            "uri": "aws2-sqs:{{queueNameOrArn}}",
             "parameters": {
-              "secretKey": "#property:secretKey",
-              "accessKey": "#property:accessKey",
-              "region": "#property:region",
-              "deleteAfterRead": "#property:deleteAfterRead"
+              "secretKey": "{{secretKey}}",
+              "accessKey": "{{accessKey}}",
+              "region": "{{region}}",
+              "deleteAfterRead": "{{deleteAfterRead}}"
             },
             "steps": [
               {
@@ -211,7 +211,7 @@
           "from": {
             "uri": "timer:tick",
             "parameters": {
-              "period": "#property:period"
+              "period": "{{period}}"
             },
             "steps": [
               {
@@ -262,7 +262,7 @@
             "uri": "kamelet:source",
             "steps": [
               {
-                "to": "netty-http:#property:url"
+                "to": "netty-http:{{url}}"
               }
             ]
           }
@@ -340,10 +340,10 @@
           "from": {
             "uri": "jira:newIssues",
             "parameters": {
-              "jiraUrl": "#property:jiraUrl",
-              "username": "#property:username",
-              "password": "#property:password",
-              "jql": "#property:jql"
+              "jiraUrl": "{{jiraUrl}}",
+              "username": "{{username}}",
+              "password": "{{password}}",
+              "jql": "{{jql}}"
             },
             "steps": [
               {
@@ -374,13 +374,39 @@
       "spec": {
         "definition": {
           "title": "Salesforce Source",
-          "description": "Receive updates from Salesforce.\n\n## TODO\nBind credentials to Kamelet properties",
+          "description": "Receive updates from Salesforce.",
           "properties": {
             "query": {
               "title": "Query",
               "description": "The query to execute on Salesforce",
               "type": "string",
               "example": "SELECT Id, Name, Email, Phone FROM Contact"
+            },
+            "clientId": {
+              "title": "Consumer Key",
+              "description": "The Salesforce application consumer key",
+              "type": "string"
+            },
+            "clientSecret": {
+              "title": "Consumer Secret",
+              "description": "The Salesforce application consumer secret",
+              "type": "string",
+              "x-descriptors": [
+                "urn:alm:descriptor:com.tectonic.ui:password"
+              ]
+            },
+            "userName": {
+              "title": "Username",
+              "description": "The Salesforce username",
+              "type": "string"
+            },
+            "password": {
+              "title": "Password",
+              "description": "The Salesforce user password",
+              "type": "string",
+              "x-descriptors": [
+                "urn:alm:descriptor:com.tectonic.ui:password"
+              ]
             }
           }
         },
@@ -394,15 +420,19 @@
         ],
         "flow": {
           "from": {
-            "uri": "salesforce:camelTestTopic",
+            "uri": "wrap:salesforce:camelTestTopic",
             "parameters": {
+              "clientId": "{{clientId}}",
+              "clientSecret": "{{clientSecret}}",
+              "userName": "{{userName}}",
+              "password": "{{password}}",
               "notifyForFields": "ALL",
               "updateTopic": "true",
               "notifyForOperationCreate": "true",
               "notifyForOperationUpdate": "false",
               "notifyForOperationDelete": "false",
               "notifyForOperationUndelete": "false",
-              "sObjectQuery": "#property:query"
+              "sObjectQuery": "{{query}}"
             },
             "steps": [
               {
@@ -465,9 +495,9 @@
         ],
         "flow": {
           "from": {
-            "uri": "slack:#property:channel",
+            "uri": "slack:{{channel}}",
             "parameters": {
-              "token": "#property:token"
+              "token": "{{token}}"
             },
             "steps": [
               {
@@ -525,7 +555,7 @@
           "from": {
             "uri": "telegram:bots",
             "parameters": {
-              "authorizationToken": "#property:authorizationToken"
+              "authorizationToken": "{{authorizationToken}}"
             },
             "steps": [
               {
@@ -584,12 +614,12 @@
           "from": {
             "uri": "timer:tick",
             "parameters": {
-              "period": "#property:period"
+              "period": "{{period}}"
             },
             "steps": [
               {
                 "set-body": {
-                  "constant": "#property:message"
+                  "constant": "{{message}}"
                 }
               },
               {
