@@ -23,7 +23,7 @@ spec:
     from:
       uri: timer:tick
       parameters:
-        period: "#property:period"
+        period: "{{period}}"
       steps:
         - to: https://api.icndb.com/jokes/random
         - to: kamelet:sink

@@ -26,4 +26,4 @@ spec:
     from:
       uri: "kamelet:source"
       steps:
-      - to: "netty-http:#property:url"
+      - to: "netty-http:{{url}}"

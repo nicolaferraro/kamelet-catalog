@@ -30,8 +30,8 @@ spec:
     from:
       uri: timer:tick
       parameters:
-        period: "#property:period"
+        period: "{{period}}"
       steps:
       - set-body:
-          constant: "#property:message"
+          constant: "{{message}}"
       - to: "kamelet:sink"
